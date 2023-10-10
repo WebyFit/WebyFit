@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import LadingPage from './components/LadingPage';
 import HomePage from './components/HomePage';
+import ConfigPage from './components/ConfigPage';
+import CartPage from './components/CartPage';
 
-const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator();
 
 class App extends Component {
   constructor(props) {
@@ -25,13 +27,29 @@ class App extends Component {
 
     return (
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="LadingPage" headerShown="false">
-          {isLoading ? (
-            <Stack.Screen name="LadingPage" component={LadingPage} />
-          ) : (
-            <Stack.Screen name="HomePage" component={HomePage} />
-          )}
-        </Stack.Navigator>
+        {isLoading ? (
+          <Tab.Navigator initialRouteName="LadingPage" tabBarOptions={{ showLabel: false }}>
+            <Tab.Screen
+              name="LadingPage"
+              component={LadingPage}
+            />
+          </Tab.Navigator>
+        ) : (
+          <Tab.Navigator initialRouteName="HomePage" tabBarOptions={{ showLabel: false }}>
+            <Tab.Screen
+              name="HomePage"
+              component={HomePage}
+            />
+            <Tab.Screen
+              name="ConfigPage"
+              component={ConfigPage}
+            />
+            <Tab.Screen
+              name="CartPage"
+              component={CartPage}
+            />
+          </Tab.Navigator>
+        )}
       </NavigationContainer>
     );
   }
