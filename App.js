@@ -27,29 +27,29 @@ class App extends Component {
 
     return (
       <NavigationContainer>
-        {isLoading ? (
-          <Tab.Navigator initialRouteName="LadingPage" tabBarOptions={{ showLabel: false }}>
+        <Tab.Navigator tabBarOptions={{ showLabel: false }}>
+          {isLoading ? (
             <Tab.Screen
               name="LadingPage"
               component={LadingPage}
             />
-          </Tab.Navigator>
-        ) : (
-          <Tab.Navigator initialRouteName="HomePage" tabBarOptions={{ showLabel: false }}>
-            <Tab.Screen
-              name="HomePage"
-              component={HomePage}
-            />
-            <Tab.Screen
-              name="ConfigPage"
-              component={ConfigPage}
-            />
-            <Tab.Screen
-              name="CartPage"
-              component={CartPage}
-            />
-          </Tab.Navigator>
-        )}
+          ) : (
+            <>
+              <Tab.Screen
+                name="HomePage"
+                component={HomePage}
+              />
+              <Tab.Screen
+                name="ConfigPage"
+                component={ConfigPage}
+              />
+              <Tab.Screen
+                name="CartPage"
+                component={CartPage}
+              />
+            </>
+          )}
+        </Tab.Navigator>
       </NavigationContainer>
     );
   }
