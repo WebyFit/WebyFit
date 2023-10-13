@@ -1,9 +1,33 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 const ConfigPage = () => {
+
+  const navigation = useNavigation();
+
+  const handleNavigateToHomePage = () => {
+    navigation.navigate('HomePage');
+  };
+
+  const handleNavigateToCartPage = () => {
+    navigation.navigate('CartPage');
+  };
+
   return (
     <View style={styles.container}>
+      <TouchableOpacity onPress={handleNavigateToHomePage}  style={styles.imagemCantoSuperiorEsquerdo}>
+        <Image
+          source={require('../assets/returnIcon.png')}
+          style={{ width: '12%', height: '10%' }}
+        />
+      </TouchableOpacity>
+      <TouchableOpacity onPress={handleNavigateToCartPage} style={styles.imagemCantoSuperiorDireito}>
+        <Image
+          source={require('../assets/carrinhoIcon.png')}
+          style={{ width: '9%', height: '6%' }}
+        />
+      </TouchableOpacity>
       <View style={styles.customView1}>
 
       </View>
@@ -89,6 +113,23 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#E9E9E9',
+  },
+  imagemCantoSuperiorEsquerdo: {
+    position: 'absolute',
+    top: 0,
+    left: '2%',
+    width: '100%', 
+    height: '100%', 
+    zIndex: 10,
+  }, 
+  imagemCantoSuperiorDireito: {
+    position: 'absolute',
+    top: 5,
+    right: '2%',
+    left: '90%',
+    width: '100%', 
+    height: '100%', 
+    zIndex: 10,
   },
   customView1: {
     width: '110%', 
