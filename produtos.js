@@ -13,32 +13,36 @@ produto = {
 
 const produtos = [
     {
+        id: 0,
         nome: "Gambiarra a'la GBT",
-        imagem: "GBT.jpeg",
+        imagem: require('./assets/prato1.png'),
         classification: 2,
         price: 15.50,
         tempoPreparo: 8,
         rating: 4.5
     },
     {
-        nome: "Carne al'a JIFC",
-        imagem: "JIFC.png",
+        id: 1,
+        nome: "Fernando a'la Ele",
+        imagem: require('./assets/prato2.jpg'),
         classification: 0,
         price: 20.00,
         tempoPreparo: 12,
         rating: 4.8 
     },
     {
-        nome: "Carne al'a JIFC",
-        imagem: "JIFC.png",
+        id: 2,
+        nome: "Omelete a'la Ovo",
+        imagem: require('./assets/prato3.png'),
         classification: 0,
-        price: 20.00,
-        tempoPreparo: 12,
-        rating: 4.8 
+        price: 12.50,
+        tempoPreparo: 10,
+        rating: 4.0 
     },
     {
-        nome: "Carne al'a JIFC",
-        imagem: "JIFC.png",
+        id: 3,
+        nome: "Carne a'la JIFC",
+        imagem: require('./assets/prato4.jpg'),
         classification: 0,
         price: 20.00,
         tempoPreparo: 12,
