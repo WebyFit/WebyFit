@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Image, View, Text, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import LadingPage from './components/LadingPage';
@@ -25,30 +26,71 @@ class App extends Component {
   render() {
     const { isLoading } = this.state;
 
+    if (isLoading) {
+      return (
+        <NavigationContainer>
+          <LadingPage />
+        </NavigationContainer>
+      );
+    }
+
     return (
       <NavigationContainer>
         <Tab.Navigator tabBarOptions={{ showLabel: false }}>
-          {isLoading ? (
             <Tab.Screen
-              name="LadingPage"
-              component={LadingPage}
+              name="HomePage"
+              component={HomePage}
+              options={({ route }) => ({
+                tabBarIcon: ({ focused, color, size }) => {
+                  const iconColor = focused ? 'green' : color;
+                  const iconWidth = focused ? '30%' : '20%';
+                  const iconHeight = focused ? '70%' : '50%';
+
+                  return (
+                    <Image
+                      source={require('./assets/iconHomeTab.png')}
+                      style={{ width: iconWidth, height: iconHeight, tintColor: iconColor }}
+                    />
+                  );
+                },
+              })}
             />
-          ) : (
-            <>
-              <Tab.Screen
-                name="HomePage"
-                component={HomePage}
-              />
-              <Tab.Screen
-                name="ConfigPage"
-                component={ConfigPage}
-              />
-              <Tab.Screen
-                name="CartPage"
-                component={CartPage}
-              />
-            </>
-          )}
+          <Tab.Screen
+            name="ConfigPage"
+            component={ConfigPage}
+            options={({ route }) => ({
+              tabBarIcon: ({ focused, color, size }) => {
+                const iconColor = focused ? 'green' : color;
+                const iconWidth = focused ? '30%' : '20%';
+                const iconHeight = focused ? '70%' : '50%';
+
+                return (
+                  <Image
+                    source={require('./assets/iconConfigTab.png')}
+                    style={{ width: iconWidth, height: iconHeight, tintColor: iconColor }}
+                  />
+                );
+              },
+            })}
+          />
+          <Tab.Screen
+            name="CartPage"
+            component={CartPage}
+            options={({ route }) => ({
+              tabBarIcon: ({ focused, color, size }) => {
+                const iconColor = focused ? 'green' : color;
+                const iconWidth = focused ? '30%' : '20%';
+                const iconHeight = focused ? '70%' : '50%';
+
+                return (
+                  <Image
+                    source={require('./assets/iconCartTab.png')}
+                    style={{ width: iconWidth, height: iconHeight, tintColor: iconColor }}
+                  />
+                );
+              },
+            })}
+          />
         </Tab.Navigator>
       </NavigationContainer>
     );

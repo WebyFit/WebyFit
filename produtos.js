@@ -24,7 +24,7 @@ const produtos = [
     {
         id: 1,
         nome: "Fernando a'la Ele",
-        imagem: require('./assets/prato2.jpg'),
+        imagem: require('./assets/prato2.png'),
         classification: 0,
         price: 20.00,
         tempoPreparo: 12,
@@ -42,7 +42,7 @@ const produtos = [
     {
         id: 3,
         nome: "Carne a'la JIFC",
-        imagem: require('./assets/prato4.jpg'),
+        imagem: require('./assets/prato4.png'),
         classification: 0,
         price: 20.00,
         tempoPreparo: 12,
