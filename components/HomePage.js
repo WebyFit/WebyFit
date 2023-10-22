@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { ScrollView, View, Text, StyleSheet, Image, TextInput, FlatList, TouchableOpacity } from 'react-native';
 import add from '../assets/add.png'
 import { useNavigation } from '@react-navigation/native';
+import Detalhes from './Detalhes';
 
 import { produtos } from '../produtos';
 
 const HomePageTab = () => {
-  const [search, setSearch] = useState('')
+  const [telaProduto, setTelaProduto] = useState({isTelaProduto: false, item: {}})
   const [produtosLista, setProdutos] = useState(produtos)
   const navigation = useNavigation();
 
@@ -29,61 +30,61 @@ const HomePageTab = () => {
   };
 
   return (
+    <View>
+      { !telaProduto.isTelaProduto ?
     <ScrollView style={{margin: 20}} >
-      <View style={styles.heading}>
-          <Image
-            source={require('../assets/locationIcon.png')} 
-            style={{ width: '5%', height: '30%' }}
-          />
-        <Text style={{ fontWeight: 'bold', fontSize: 18}}>Balneário Gaivota - SC</Text>
-        <TouchableOpacity onPress={handleNavigateToConfigPage}>
-          <Image
-            source={require('../assets/fotoPerfil.png')}
-            style={{
-              width: 60, 
-              height: 60,
-              borderRadius: 10,
-              
-            }}
+        <View style={styles.heading}>
+            <Image
+              source={require('../assets/locationIcon.png')} 
+              style={{ width: '5%', height: '30%' }}
             />
-        </TouchableOpacity>
-      </View>
-      <Text style={{color: '#48A332', fontSize: 16, fontWeight: 'bold'}}>Olá Igor!</Text>
-      <Text style={{fontSize: 18, fontWeight: 'bold'}}>Procure sua comida!</Text>
-        <TextInput
-        style={styles.search}
-        placeholder='Busque seu delivery saudável'
-        onChangeText={e=>filtrarProduto(e)}
-        />
-        {/* <View style={styles.container}>
-        {
-          produtosLista.map((value, key) =>{
-            return(
-              <Item 
-                key={key}
-                produto={value}
+          <Text style={{ fontWeight: 'bold', fontSize: 18}}>Balneário Gaivota - SC</Text>
+          <TouchableOpacity onPress={handleNavigateToConfigPage}>
+            <Image
+              source={require('../assets/fotoPerfil.png')}
+              style={{
+                width: 60, 
+                height: 60,
+                borderRadius: 10,
+                
+              }}
               />
-            )
-          })
-        }
-        </View> */}
+          </TouchableOpacity>
+        </View>
+        <Text style={{color: '#48A332', fontSize: 16, fontWeight: 'bold'}}>Olá Igor!</Text>
+        <Text style={{fontSize: 18, fontWeight: 'bold'}}>Procure sua comida!</Text>
+        <TextInput
+          style={styles.search}
+          placeholder='Busque seu delivery saudável'
+          onChangeText={e=>filtrarProduto(e)}
+        />
         <FlatList
           data={produtosLista} 
-          renderItem={({item})=> <Item item={item}/>}
+          renderItem={({item})=> <Item item={item} estado={setTelaProduto}/>}
           keyExtractor={(item) => item.id} 
           numColumns={2}
         />
-
     </ScrollView>
+      : // Detalhe dos produtos 
+      <View>
+        <Detalhes item={telaProduto.item} estado={setTelaProduto}/>
+      </View>
+      }
+  </View>
   );
 };
 
-const Item = ({item}) => {
-  const imagePath = `../assets/JIFC.png`;
+const Item = ({item, estado}) => {
+  const navigation = useNavigation()
 
   useEffect(()=>{
     console.log(item)
   },[])
+
+  const handleEstado = () =>{
+    console.log(estado)
+    estado({isTelaProduto: true, item})
+  }
 
   return (
     <View  style={styles.container}>
@@ -103,8 +104,8 @@ const Item = ({item}) => {
           {item.rating}/5
         </Text>
       </View>
-      <View style={styles.addPrice}>
-        <Text style={styles.price}>
+      <View style={styles.addPrice} >
+        <Text style={styles.price} onPress={e=>handleEstado()}>
           {new Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL'}).format(item.price)} 
         </Text>
         <Image

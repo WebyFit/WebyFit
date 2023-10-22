@@ -198,7 +198,7 @@ const styles = StyleSheet.create({
     padding: 0,
     left: 0,     
     right: 0,    
-    textAlign: 'center', 
+    // textAlign: 'center', 
   },  
   textEmail: {
     fontSize: 8,
