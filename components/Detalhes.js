@@ -1,5 +1,4 @@
 import { ScrollView, View, Text, StyleSheet, Image} from 'react-native'
-import Icon from 'react-native-ionicons'
       
 const Detalhes = ({item, estado}) => {
 
@@ -12,13 +11,13 @@ const Detalhes = ({item, estado}) => {
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.header}>
         <View style={styles.leftIcon}>
-          <Icon name="ios-arrow-back" size={24} color="black" onPress={e=>handleEstado()} />
+
         </View>
         <View style={styles.titleContainer}>
           <Text style={styles.title}>Detalhes da comida</Text>
         </View>
         <View style={styles.rightIcon}>
-          <Icon name="heart-outline" size={24} color="black" />
+
         </View>
       </View>
 
@@ -41,7 +40,7 @@ const Detalhes = ({item, estado}) => {
         <View style={styles.moreInfo}>
           <View style={styles.plateRating}>
             <Text style={styles.plateRatingText}>
-              <Icon name="star" size={20} color="#f2b51f" /> 4.5
+
             </Text>
           </View>
           <View style={styles.plateCalories}>
@@ -51,7 +50,7 @@ const Detalhes = ({item, estado}) => {
           </View>
           <View style={styles.deliveryTime}>
             <Text style={styles.deliveryTimeText}>
-              <Icon name="time" size={20} color="#1f2df2" /> 20 min
+
             </Text>
           </View>
         </View>
