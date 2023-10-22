@@ -108,13 +108,15 @@ const Detalhes = ({item, estado}) => {
             </View>
             </View>
             <View style={styles.aboutPlate}>
-            <View style={styles.aboutHeader}>
-                <Text style={styles.aboutHeaderText}>Sobre a comida</Text>
-            </View>
-            <View style={styles.aboutContent} >
-                <Text style={styles.aboutContentText} >
-                    {item.desc}
-                </Text>
+            <View style={{margin: 20}}>
+                <View style={styles.aboutHeader}>
+                    <Text style={styles.aboutHeaderText}>Sobre a comida</Text>
+                </View>
+                <View style={styles.aboutContent} >
+                    <Text style={styles.aboutContentText} >
+                        {item.desc}
+                    </Text>
+                </View>
             </View>
             </View>
         </View>
