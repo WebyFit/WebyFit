@@ -98,12 +98,24 @@ const Item = ({item, estado}) => {
         {item.nome}
       </Text>
       <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-around'}}>
-        <Text style={{marginRight: 50}}>
+        <View style={{flex: 1, flexDirection: 'row', alignItems: 'center', marginLeft: 30}}>
+        <Image
+          source={require('../assets/timer.png')} 
+          style={{width: 18, height: 18, marginRight: 2}}
+        />
+        <Text style={{marginRight: 20}}>
           {item.tempoPreparo} min
         </Text>
-        <Text>
-          {item.rating}/5
-        </Text>
+        </View>
+        <View style={{flex: 1, flexDirection: 'row', alignItems: 'center'}}>
+          <Image 
+            source={require('../assets/starIcon.png')}
+            style={{width: 20, height: 20}}
+          />
+          <Text>
+            {item.rating}/5
+          </Text>
+        </View>
       </View>
       <View style={styles.addPrice} >
         <TouchableOpacity onPress={e=>handleEstado()}>
