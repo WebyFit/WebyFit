@@ -31,6 +31,7 @@ const HomePageTab = () => {
 
   return (
     <View>
+      {/* TelaProduto é um componente que substitui tudo na HomePage, tecnicamente é uma sub-tela */}
       { !telaProduto.isTelaProduto ?
     <ScrollView style={{margin: 20}} >
         <View style={styles.heading}>
@@ -105,13 +106,17 @@ const Item = ({item, estado}) => {
         </Text>
       </View>
       <View style={styles.addPrice} >
-        <Text style={styles.price} onPress={e=>handleEstado()}>
-          {new Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL'}).format(item.price)} 
-        </Text>
-        <Image
-          source={add}
-          style={{width: 48, height: 48, transform: [{translateX: -16}]}}
-        />
+        <TouchableOpacity onPress={e=>handleEstado()}>
+          <Text style={styles.price}> 
+            {new Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL'}).format(item.price)} 
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={e=>handleEstado()}>
+          <Image
+            source={add}
+            style={{width: 48, height: 48, transform: [{translateX: -16}]}}
+          />
+        </TouchableOpacity>
       </View>
     </View>
   )
